@@ -1,9 +1,6 @@
 package br.com.zupacademy.rafael.casadocodigo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,6 +19,7 @@ public class Autor {
 
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
 
     @NotBlank
@@ -30,6 +28,9 @@ public class Autor {
 
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
+    @Deprecated
+    public Autor() {
+    }
 
     public Autor(@NotBlank @Size(min = 3, max = 30)String nome,@NotBlank @Email String email,
                  @NotBlank @Size(max = 400) String descricao){
