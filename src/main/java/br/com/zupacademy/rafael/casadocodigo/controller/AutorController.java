@@ -1,6 +1,6 @@
 package br.com.zupacademy.rafael.casadocodigo.controller;
 
-import br.com.zupacademy.rafael.casadocodigo.dto.AutorDTO;
+import br.com.zupacademy.rafael.casadocodigo.dto.AutorForm;
 import br.com.zupacademy.rafael.casadocodigo.entities.Autor;
 import br.com.zupacademy.rafael.casadocodigo.repositories.AutorRepository;
 import br.com.zupacademy.rafael.casadocodigo.validation.EmailAutorDuplicadoValidator;
@@ -21,8 +21,8 @@ public class AutorController {
     private EmailAutorDuplicadoValidator emailAutorDuplicadoValidator;
 
     @PostMapping
-    public String cadastrarAutor (@Valid @RequestBody AutorDTO autorDTO){
-        Autor autor = autorDTO.converter();
+    public String cadastrarAutor (@Valid @RequestBody AutorForm autorForm){
+        Autor autor = autorForm.converter();
         autorRepository.save(autor);
         return autor.toString();
 
