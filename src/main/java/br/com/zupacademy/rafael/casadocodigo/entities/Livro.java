@@ -46,6 +46,9 @@ public class Livro {
     @ManyToOne
     private Autor autor;
 
+    @Deprecated
+    public Livro() {
+    }
 
     public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
                  @NotNull @Min(20) BigDecimal preco, @NotNull @Min(100) Integer numPaginas, @NotBlank String isbn,
@@ -59,6 +62,14 @@ public class Livro {
         this.dataPublicacao = dataPublicacao;
         this.categoria = categoria;
         this.autor = autor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 
     @Override
