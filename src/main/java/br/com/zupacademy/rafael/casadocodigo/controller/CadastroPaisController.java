@@ -20,11 +20,11 @@ public class CadastroPaisController {
 
     @PostMapping(value = "/api/pais")
     @Transactional
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid PaisForm paisForm){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid PaisForm paisForm) {
         Pais pais = paisForm.converter();
 
         manager.persist(pais);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(paisForm.toString());
     }
 }

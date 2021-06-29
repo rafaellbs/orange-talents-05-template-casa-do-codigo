@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueValue {
 
-    String message () default "{br.com.zupacademy.uniquevalue}";
+    String message () default "Esse registro já existe.";
 
     Class<?>[] groups() default { };
 

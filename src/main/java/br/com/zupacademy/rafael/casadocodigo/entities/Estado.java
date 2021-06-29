@@ -1,6 +1,7 @@
 package br.com.zupacademy.rafael.casadocodigo.entities;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -15,28 +16,13 @@ public class Estado {
     private String nome;
 
     @NotNull
+    @Valid
     @ManyToOne
     private Pais pais;
 
-    public Estado(@NotBlank String nome, @NotNull Pais pais) {
+    public Estado(@NotBlank String nome, @NotNull @Valid Pais pais) {
         this.nome = nome;
         this.pais = pais;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Pais getPais() {
-        return pais;
     }
 
     @Override
@@ -46,5 +32,13 @@ public class Estado {
                 ", nome='" + nome + '\'' +
                 ", pais=" + pais +
                 '}';
+    }
+
+    public Boolean existeEstadoParaEstePais(Pais pais){
+        if (pais.getId() == this.pais.getId()){
+            return true;
+        }
+
+        return false;
     }
 }
